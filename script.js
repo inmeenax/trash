@@ -6,14 +6,14 @@ const MERCHANT_ID = "100666048";
 
 // DO NOT put your real live API key in a public GitHub repository.
 // Use a test/sandbox key if WatchPays provides one.
-const API_KEY = "YOUR_TEST_API_KEY";
+const API_KEY = "18ea7129934a0912c3ad15dd313df48e";
 
 const WATCHPAYS_API = "https://api.watchpays.com/v1/create";
 
 // Your GitHub Pages URL.
 // Replace this after GitHub Pages gives you your actual URL.
 const CALLBACK_URL =
-    "https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/";
+    "https://inmeenax.github.io/trash/";
 
 // ===============================
 // CREATE PAYMENT
