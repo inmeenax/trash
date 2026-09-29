@@ -6,13 +6,69 @@ const WEBSITE_URL =
   "https://inmeenax.github.io/trash/";
 
 
+const ALLOWED_AMOUNTS = [
+  100,
+  200,
+  300,
+  400,
+  500
+];
+
+
+// ------------------------------------
+// SHOW LOADING SCREEN
+// ------------------------------------
+
+function showLoading(amount) {
+
+  const walletScreen =
+    document.getElementById("walletScreen");
+
+  const loadingScreen =
+    document.getElementById("loadingScreen");
+
+  const loadingAmount =
+    document.getElementById("loadingAmount");
+
+  walletScreen.classList.add("hidden");
+
+  loadingScreen.classList.remove("hidden");
+
+  loadingAmount.textContent =
+    amount;
+}
+
+
+// ------------------------------------
+// CREATE PAYMENT
+// ------------------------------------
+
 async function createPayment(amount) {
 
-  const status =
-    document.getElementById("status");
+  showLoading(amount);
 
-  status.textContent =
-    "Creating payment...";
+  const loadingTitle =
+    document.getElementById("loadingTitle");
+
+  const loadingText =
+    document.getElementById("loadingText");
+
+  const gatewayStep =
+    document.getElementById("gatewayStep");
+
+  const redirectStep =
+    document.getElementById("redirectStep");
+
+
+  loadingTitle.textContent =
+    "Preparing your payment";
+
+
+  loadingText.textContent =
+    "Please wait while we securely connect to the payment gateway.";
+
+
+  gatewayStep.classList.add("active");
 
 
   try {
@@ -49,20 +105,51 @@ async function createPayment(amount) {
       data.payment_url
     ) {
 
-      status.textContent =
-        "Redirecting to payment...";
+      gatewayStep.classList.add("done");
+
+      redirectStep.classList.add("active");
 
 
-      window.location.href =
-        data.payment_url;
+      loadingTitle.textContent =
+        "Payment gateway ready";
+
+
+      loadingText.textContent =
+        "Redirecting you securely to complete your payment...";
+
+
+      // Small delay so user can see successful transition
+      setTimeout(() => {
+
+        window.location.href =
+          data.payment_url;
+
+      }, 500);
 
 
     } else {
 
-      status.textContent =
+      loadingTitle.textContent =
+        "Payment could not be created";
+
+
+      loadingText.textContent =
         data.error ||
         data.message ||
-        "Payment creation failed.";
+        "Please try again.";
+
+
+      setTimeout(() => {
+
+        document
+          .getElementById("loadingScreen")
+          .classList.add("hidden");
+
+        document
+          .getElementById("walletScreen")
+          .classList.remove("hidden");
+
+      }, 2500);
 
     }
 
@@ -75,13 +162,34 @@ async function createPayment(amount) {
     );
 
 
-    status.textContent =
-      "Could not connect to payment server.";
+    loadingTitle.textContent =
+      "Connection problem";
+
+
+    loadingText.textContent =
+      "Please check your internet connection and try again.";
+
+
+    setTimeout(() => {
+
+      document
+        .getElementById("loadingScreen")
+        .classList.add("hidden");
+
+      document
+        .getElementById("walletScreen")
+        .classList.remove("hidden");
+
+    }, 2500);
 
   }
 
 }
 
+
+// ------------------------------------
+// COPY PAYMENT LINK
+// ------------------------------------
 
 function copyPaymentLink(amount) {
 
@@ -101,22 +209,31 @@ function copyPaymentLink(amount) {
       status.textContent =
         "₹" +
         amount +
-        " payment URL copied!";
+        " payment link copied ✓";
+
+
+      setTimeout(() => {
+
+        status.textContent = "";
+
+      }, 2500);
 
     })
-    .catch(error => {
+    .catch(() => {
 
-      console.error(
-        "Copy error:",
-        error
+      prompt(
+        "Copy this payment link:",
+        paymentLink
       );
-
-      alert(paymentLink);
 
     });
 
 }
 
+
+// ------------------------------------
+// DIRECT PAYMENT LINK
+// ------------------------------------
 
 function checkDirectPayment() {
 
@@ -132,25 +249,24 @@ function checkDirectPayment() {
     );
 
 
-  const allowedAmounts = [
-    100,
-    200,
-    300,
-    400,
-    500
-  ];
-
-
   if (
-    allowedAmounts.includes(amount)
+    ALLOWED_AMOUNTS.includes(amount)
   ) {
 
+    // Immediately switch to loading screen
+    showLoading(amount);
+
+    // Then create payment
     createPayment(amount);
 
   }
 
 }
 
+
+// ------------------------------------
+// PAGE LOAD
+// ------------------------------------
 
 window.addEventListener(
   "DOMContentLoaded",
