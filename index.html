@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -10,146 +9,207 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>My Wallet</title>
+  <title>Secure Payment</title>
 
   <link
     rel="stylesheet"
     href="style.css"
   >
-
 </head>
-
 
 <body>
 
-  <div class="wallet">
+  <div class="page">
 
-    <h1>My Wallet</h1>
+    <!-- WALLET -->
+    <div id="walletScreen" class="wallet-card">
 
-    <p class="subtitle">
-      Select an amount
-    </p>
-
-
-    <div class="payment-row">
-
-      <div class="amount">
-        ₹100
+      <div class="wallet-icon">
+        ₹
       </div>
 
-      <button
-        class="pay-btn"
-        onclick="createPayment(100)"
-      >
-        Pay
-      </button>
+      <h1>Secure Payment</h1>
 
-      <button
-        class="copy-btn"
-        onclick="copyPaymentLink(100)"
-      >
-        Copy URL
-      </button>
+      <p class="subtitle">
+        Select an amount to continue
+      </p>
+
+
+      <div class="payment-list">
+
+        <div class="payment-row">
+          <div class="amount">₹100</div>
+
+          <button
+            class="pay-btn"
+            onclick="createPayment(100)"
+          >
+            Pay
+          </button>
+
+          <button
+            class="copy-btn"
+            onclick="copyPaymentLink(100)"
+          >
+            Copy
+          </button>
+        </div>
+
+
+        <div class="payment-row">
+          <div class="amount">₹200</div>
+
+          <button
+            class="pay-btn"
+            onclick="createPayment(200)"
+          >
+            Pay
+          </button>
+
+          <button
+            class="copy-btn"
+            onclick="copyPaymentLink(200)"
+          >
+            Copy
+          </button>
+        </div>
+
+
+        <div class="payment-row">
+          <div class="amount">₹300</div>
+
+          <button
+            class="pay-btn"
+            onclick="createPayment(300)"
+          >
+            Pay
+          </button>
+
+          <button
+            class="copy-btn"
+            onclick="copyPaymentLink(300)"
+          >
+            Copy
+          </button>
+        </div>
+
+
+        <div class="payment-row">
+          <div class="amount">₹400</div>
+
+          <button
+            class="pay-btn"
+            onclick="createPayment(400)"
+          >
+            Pay
+          </button>
+
+          <button
+            class="copy-btn"
+            onclick="copyPaymentLink(400)"
+          >
+            Copy
+          </button>
+        </div>
+
+
+        <div class="payment-row">
+          <div class="amount">₹500</div>
+
+          <button
+            class="pay-btn"
+            onclick="createPayment(500)"
+          >
+            Pay
+          </button>
+
+          <button
+            class="copy-btn"
+            onclick="copyPaymentLink(500)"
+          >
+            Copy
+          </button>
+        </div>
+
+      </div>
+
+
+      <div
+        id="status"
+        class="status"
+      ></div>
+
+
+      <div class="secure-note">
+        <span>🔒</span>
+        Secure payment gateway
+      </div>
 
     </div>
 
 
-    <div class="payment-row">
-
-      <div class="amount">
-        ₹200
-      </div>
-
-      <button
-        class="pay-btn"
-        onclick="createPayment(200)"
-      >
-        Pay
-      </button>
-
-      <button
-        class="copy-btn"
-        onclick="copyPaymentLink(200)"
-      >
-        Copy URL
-      </button>
-
-    </div>
-
-
-    <div class="payment-row">
-
-      <div class="amount">
-        ₹300
-      </div>
-
-      <button
-        class="pay-btn"
-        onclick="createPayment(300)"
-      >
-        Pay
-      </button>
-
-      <button
-        class="copy-btn"
-        onclick="copyPaymentLink(300)"
-      >
-        Copy URL
-      </button>
-
-    </div>
-
-
-    <div class="payment-row">
-
-      <div class="amount">
-        ₹400
-      </div>
-
-      <button
-        class="pay-btn"
-        onclick="createPayment(400)"
-      >
-        Pay
-      </button>
-
-      <button
-        class="copy-btn"
-        onclick="copyPaymentLink(400)"
-      >
-        Copy URL
-      </button>
-
-    </div>
-
-
-    <div class="payment-row">
-
-      <div class="amount">
-        ₹500
-      </div>
-
-      <button
-        class="pay-btn"
-        onclick="createPayment(500)"
-      >
-        Pay
-      </button>
-
-      <button
-        class="copy-btn"
-        onclick="copyPaymentLink(500)"
-      >
-        Copy URL
-      </button>
-
-    </div>
-
-
+    <!-- LOADING SCREEN -->
     <div
-      id="status"
-      class="status"
-    ></div>
+      id="loadingScreen"
+      class="loading-card hidden"
+    >
+
+      <div class="loader-ring">
+        <div></div>
+      </div>
+
+
+      <h2 id="loadingTitle">
+        Preparing your payment
+      </h2>
+
+
+      <p id="loadingText">
+        Please wait while we securely connect to the payment gateway.
+      </p>
+
+
+      <div class="loading-amount">
+        ₹<span id="loadingAmount">0</span>
+      </div>
+
+
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+
+
+      <div class="loading-steps">
+
+        <div class="step active">
+          <span>✓</span>
+          Creating payment request
+        </div>
+
+        <div
+          id="gatewayStep"
+          class="step"
+        >
+          <span>2</span>
+          Connecting to gateway
+        </div>
+
+        <div
+          id="redirectStep"
+          class="step"
+        >
+          <span>3</span>
+          Redirecting securely
+        </div>
+
+      </div>
+
+
+      <div class="please-wait">
+        Please don't close this page
+      </div>
+
+    </div>
 
   </div>
 
