@@ -1,30 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment</title>
-    <link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>My Wallet</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
+
+
 <body>
 
-    <div class="container">
-        <div class="card">
-            <h1>Make Payment</h1>
-            <p class="subtitle">Select an amount</p>
+  <div class="wallet">
 
-            <button class="pay-btn" onclick="createPayment(300)">
-                Pay ₹300
-            </button>
+    <h1>My Wallet</h1>
 
-            <button class="pay-btn" onclick="createPayment(500)">
-                Pay ₹500
-            </button>
+    <p class="subtitle">
+      Select an amount
+    </p>
 
-            <div id="status"></div>
-        </div>
+
+    <div class="payment-row">
+
+      <div class="amount">
+        ₹100
+      </div>
+
+      <button
+        class="pay-btn"
+        onclick="createPayment(100)"
+      >
+        Pay
+      </button>
+
+      <button
+        class="copy-btn"
+        onclick="copyPaymentLink(100)"
+      >
+        Copy URL
+      </button>
+
     </div>
 
-    <script src="script.js"></script>
+
+    <div class="payment-row">
+
+      <div class="amount">
+        ₹200
+      </div>
+
+      <button
+        class="pay-btn"
+        onclick="createPayment(200)"
+      >
+        Pay
+      </button>
+
+      <button
+        class="copy-btn"
+        onclick="copyPaymentLink(200)"
+      >
+        Copy URL
+      </button>
+
+    </div>
+
+
+    <div class="payment-row">
+
+      <div class="amount">
+        ₹300
+      </div>
+
+      <button
+        class="pay-btn"
+        onclick="createPayment(300)"
+      >
+        Pay
+      </button>
+
+      <button
+        class="copy-btn"
+        onclick="copyPaymentLink(300)"
+      >
+        Copy URL
+      </button>
+
+    </div>
+
+
+    <div class="payment-row">
+
+      <div class="amount">
+        ₹400
+      </div>
+
+      <button
+        class="pay-btn"
+        onclick="createPayment(400)"
+      >
+        Pay
+      </button>
+
+      <button
+        class="copy-btn"
+        onclick="copyPaymentLink(400)"
+      >
+        Copy URL
+      </button>
+
+    </div>
+
+
+    <div class="payment-row">
+
+      <div class="amount">
+        ₹500
+      </div>
+
+      <button
+        class="pay-btn"
+        onclick="createPayment(500)"
+      >
+        Pay
+      </button>
+
+      <button
+        class="copy-btn"
+        onclick="copyPaymentLink(500)"
+      >
+        Copy URL
+      </button>
+
+    </div>
+
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
 </body>
+
 </html>
