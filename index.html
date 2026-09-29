@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h1>Make Payment</h1>
+            <p class="subtitle">Select an amount</p>
+
+            <button class="pay-btn" onclick="createPayment(300)">
+                Pay ₹300
+            </button>
+
+            <button class="pay-btn" onclick="createPayment(500)">
+                Pay ₹500
+            </button>
+
+            <div id="status"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
